@@ -18,6 +18,24 @@ public class HelloFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_hello, container, false);
         Button btn = view.findViewById(R.id.back);
+        Button btn1 = view.findViewById(R.id.listViewButton);
+        Button btn2 = view.findViewById(R.id.listRecycle);
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentTransaction fr = getFragmentManager().beginTransaction();
+                fr.replace(R.id.fragmentContainerView, new FragmentListView());
+                fr.commit();
+            }
+        });
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentTransaction fr = getFragmentManager().beginTransaction();
+                fr.replace(R.id.fragmentContainerView, new FragmentRecycleView());
+                fr.commit();
+            }
+        });
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
