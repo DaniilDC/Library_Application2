@@ -1,8 +1,8 @@
 package com.example.library_application;
 
 public class Book {
-    private String name; // название
-    private int flagResource; // ресурс флага
+    private String name;
+    private int flagResource;
 
     public Book(String name, int flag) {
         this.name = name;
