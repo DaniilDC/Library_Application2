@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -42,27 +43,13 @@ public class StartFragment extends Fragment {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                EditText editText = view.findViewById(R.id.Email);
-//                Bundle result = new Bundle();
-//                result.putString("df1", editText.getText().toString());
-//                SignUpFragment signUpFragment = new SignUpFragment();
-//                signUpFragment.setArguments(result);
-//                getFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, signUpFragment)
-//                        .commit();
-//                getParentFragmentManager().setFragmentResult("dataFrom1", result);
-//                editText.setText("");
-
-                FragmentTransaction fr1 = getFragmentManager().beginTransaction();
-                fr1.replace(R.id.fragmentContainerView, new SignUpFragment());
-                fr1.commit();
+                Navigation.findNavController(view).navigate(R.id.action_startFragment_to_signUpFragment);
             }
         });
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentTransaction fr = getFragmentManager().beginTransaction();
-                fr.replace(R.id.fragmentContainerView, new HelloFragment());
-                fr.commit();
+                Navigation.findNavController(view).navigate(R.id.action_startFragment_to_helloFragment);
             }
         });
         return view;

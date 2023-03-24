@@ -25,7 +25,6 @@
         android:id="@+id/imageView"
         android:layout_width="263dp"
         android:layout_height="96dp"
-        android:contentDescription="TODO"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

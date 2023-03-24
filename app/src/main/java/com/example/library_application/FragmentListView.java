@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,22 +28,20 @@ public class FragmentListView extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentTransaction fr = getFragmentManager().beginTransaction();
-                fr.replace(R.id.fragmentContainerView, new HelloFragment());
-                fr.commit();
+                Navigation.findNavController(view).navigate(R.id.action_fragmentListView_to_helloFragment);
             }
         });
 
-        ArrayList<Book> brands = new ArrayList<Book>();
+        ArrayList<Book> books = new ArrayList<Book>();
         String[] all_books = getResources().getStringArray(R.array.Book_names);
         for (String brand : all_books) {
-            brands.add(new Book(brand, R.drawable.purple_book));
+            books.add(new Book(brand, R.drawable.purple_book));
         }
-        ListView brandsList = view.findViewById(R.id.listViewBooks);
-        BookAdapter brandAdapter = new BookAdapter(getContext(), R.layout.item, brands);
-        brandsList.setAdapter(brandAdapter);
+        ListView bookList = view.findViewById(R.id.listViewBooks);
+        BookAdapter bookAdapter = new BookAdapter(getContext(), R.layout.item, books);
+        bookList.setAdapter(bookAdapter);
 
-        brandsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        bookList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String selectedItem = all_books[position];

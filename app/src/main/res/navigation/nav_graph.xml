@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/startFragment">
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="com.example.library_application.StartFragment"
+        android:label="fragment_start"
+        tools:layout="@layout/fragment_start" >
+        <action
+            android:id="@+id/action_startFragment_to_helloFragment"
+            app:destination="@id/helloFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/helloFragment"
+        android:name="com.example.library_application.HelloFragment"
+        android:label="fragment_hello"
+        tools:layout="@layout/fragment_hello" >
+        <action
+            android:id="@+id/action_helloFragment_to_fragmentListView"
+            app:destination="@id/fragmentListView" />
+        <action
+            android:id="@+id/action_helloFragment_to_fragmentRecycleView"
+            app:destination="@id/fragmentRecycleView" />
+        <action
+            android:id="@+id/action_helloFragment_to_startFragment"
+            app:destination="@id/startFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.library_application.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_helloFragment"
+            app:destination="@id/helloFragment" />
+        <argument
+            android:name="EmailAdress"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentListView"
+        android:name="com.example.library_application.FragmentListView"
+        android:label="fragment_list_view"
+        tools:layout="@layout/fragment_list_view" >
+        <action
+            android:id="@+id/action_fragmentListView_to_helloFragment"
+            app:destination="@id/helloFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentRecycleView"
+        android:name="com.example.library_application.FragmentRecycleView"
+        android:label="fragment_recycle_view"
+        tools:layout="@layout/fragment_recycle_view" >
+        <action
+            android:id="@+id/action_fragmentRecycleView_to_helloFragment"
+            app:destination="@id/helloFragment" />
+    </fragment>
+</navigation>
