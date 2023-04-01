@@ -1,7 +1,16 @@
 package com.example.library_application;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
@@ -16,6 +25,8 @@ import org.w3c.dom.Text;
 
 public class HelloFragment extends Fragment {
 
+    private static final String CHANNEL_ID = "ChannelID";
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -24,10 +35,8 @@ public class HelloFragment extends Fragment {
         Button btn = view.findViewById(R.id.back);
         Button btn1 = view.findViewById(R.id.listViewButton);
         Button btn2 = view.findViewById(R.id.listRecycle);
+        Button NotBtn = view.findViewById(R.id.Notification);
 
-//        TextView textView = view.findViewById(R.id.textView2);
-//        String res = getArguments().getString("key1");
-//        textView.setText(res);
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +57,43 @@ public class HelloFragment extends Fragment {
                 Navigation.findNavController(view).navigate(R.id.action_helloFragment_to_startFragment);
             }
         });
+
+        NotBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                createNotificationChannel();
+                showNotification();
+
+                Intent intent = new Intent(requireContext(), BookService.class);
+                requireActivity().startService(intent);
+            }
+        });
         return view;
+    }
+    private void createNotificationChannel()
+    {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+        {
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "book",
+                    NotificationManager.IMPORTANCE_DEFAULT);
+
+            NotificationManager notificationManager =
+                    (NotificationManager) requireContext().getSystemService(Context.NOTIFICATION_SERVICE);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
+
+    private void showNotification()
+    {
+        Notification notification = new NotificationCompat.Builder(requireContext(), CHANNEL_ID)
+                .setSmallIcon(R.drawable.purple_book)
+                .setContentText("Книга")
+                .setContentTitle("Добавлено")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .build();
+
+        NotificationManager notificationManager =
+                (NotificationManager) requireContext().getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(1, notification);
     }
 }
