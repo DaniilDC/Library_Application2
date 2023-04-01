@@ -24,10 +24,10 @@ public class SignUpFragment extends Fragment {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                EditText editText = view.findViewById(R.id.Email2);
-//                String email_name = editText.getText().toString();
-//                Bundle result = new Bundle();
-//                result.putString("key1", email_name);
+                EditText editText = view.findViewById(R.id.Email2);
+                String email_name = editText.getText().toString();
+                Bundle result = new Bundle();
+                result.putString("key1", email_name);
 
                 Navigation.findNavController(view).navigate(R.id.action_signUpFragment_to_helloFragment);
             }
