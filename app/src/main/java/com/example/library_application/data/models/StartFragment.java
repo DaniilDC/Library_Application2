@@ -1,4 +1,4 @@
-package com.example.library_application;
+package com.example.library_application.data.models;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.library_application.R;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class StartFragment extends Fragment {
@@ -53,57 +54,5 @@ public class StartFragment extends Fragment {
             }
         });
         return view;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        Log.d(TAG, "OnViewCreated - StartFragment");
-    }
-
-    @Override
-    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
-        super.onViewStateRestored(savedInstanceState);
-        Log.w(TAG, "OnViewStateRestored - StartFragment");
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        Log.i(TAG, "OnStart - StartFragment");
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.e(TAG, "OnResume - StartFragment");
-    }
-    @Override
-    public void onPause() {
-        super.onPause();
-        Log.e(TAG, "OnPause - StartFragment");
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        Log.e(TAG, "OnStop - StartFragment");
-    }
-
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-        Log.e(TAG, "OnSavedInstanceState - StartFragment");
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        Log.e(TAG, "OnDestroyView - StartFragment");
-    }
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Log.e(TAG, "OnDestroy - StartFragment");
     }
 }

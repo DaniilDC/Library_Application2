@@ -1,4 +1,4 @@
-package com.example.library_application;
+package com.example.library_application.ui.stateholder.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -9,48 +9,43 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.library_application.R;
+import com.example.library_application.data.datasource.Book;
 
 import java.util.List;
 
 public class BookAdapterRV extends RecyclerView.Adapter<BookAdapterRV.ViewHolder> {
-    private final LayoutInflater inflater;
-    private final List<Book> books;
     private final OnBookClickListener onClickListener;
-
-    public BookAdapterRV(Context context, List<Book> books, OnBookClickListener onClickListener) {
-        this.inflater = LayoutInflater.from(context);
-        this.books = books;
+    private LiveData<List<Book>> bookItems;
+    public BookAdapterRV(LiveData<List<Book>> books, OnBookClickListener onClickListener) {
+        this.bookItems = books;
         this.onClickListener = onClickListener;
     }
-    interface OnBookClickListener {
-        void onBookClick(Book book, int position);
+    public interface OnBookClickListener {
+        void onBookClick(Book book);
     }
 
     @NonNull
     @Override
     public BookAdapterRV.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(BookAdapterRV.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        Book book = books.get(position);
+        Book book = bookItems.getValue().get(position);
         holder.flagView.setImageResource(book.getFlagResource());
         holder.nameView.setText(book.getName());
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onClickListener.onBookClick(book, position);
-            }
-        });
+        holder.itemView.setOnClickListener(v -> onClickListener.onBookClick(book));
     }
 
     @Override
     public int getItemCount() {
-        return books.size();
+        return bookItems.getValue().size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

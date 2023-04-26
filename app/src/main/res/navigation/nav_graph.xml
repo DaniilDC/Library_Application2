@@ -6,7 +6,7 @@
     app:startDestination="@id/startFragment">
     <fragment
         android:id="@+id/startFragment"
-        android:name="com.example.library_application.StartFragment"
+        android:name="com.example.library_application.data.models.StartFragment"
         android:label="fragment_start"
         tools:layout="@layout/fragment_start" >
         <action
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/helloFragment"
-        android:name="com.example.library_application.HelloFragment"
+        android:name="com.example.library_application.ui.fragments.HelloFragment"
         android:label="fragment_hello"
         tools:layout="@layout/fragment_hello" >
         <action
@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.example.library_application.SignUpFragment"
+        android:name="com.example.library_application.ui.fragments.SignUpFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" >
         <action
@@ -45,7 +45,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentListView"
-        android:name="com.example.library_application.FragmentListView"
+        android:name="com.example.library_application.ui.fragments.FragmentListView"
         android:label="fragment_list_view"
         tools:layout="@layout/fragment_list_view" >
         <action
@@ -54,11 +54,23 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentRecycleView"
-        android:name="com.example.library_application.FragmentRecycleView"
+        android:name="com.example.library_application.ui.fragments.FragmentRecycleView"
         android:label="fragment_recycle_view"
         tools:layout="@layout/fragment_recycle_view" >
         <action
             android:id="@+id/action_fragmentRecycleView_to_helloFragment"
             app:destination="@id/helloFragment" />
+        <action
+            android:id="@+id/action_fragmentRecycleView_to_bookDescriptionFragment"
+            app:destination="@id/bookDescriptionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookDescriptionFragment"
+        android:name="com.example.library_application.ui.fragments.BookDescriptionFragment"
+        android:label="fragment_book_description"
+        tools:layout="@layout/fragment_book_description" >
+        <action
+            android:id="@+id/action_bookDescriptionFragment_to_fragmentRecycleView"
+            app:destination="@id/fragmentRecycleView" />
     </fragment>
 </navigation>

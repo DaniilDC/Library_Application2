@@ -1,9 +1,8 @@
-package com.example.library_application;
+package com.example.library_application.ui.fragments;
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
 
 import android.util.Log;
@@ -14,6 +13,10 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.example.library_application.R;
+import com.example.library_application.data.datasource.Book;
+import com.example.library_application.ui.stateholder.adapter.BookAdapter;
 
 import java.util.ArrayList;
 
@@ -49,8 +52,6 @@ public class FragmentListView extends Fragment {
                 Toast.makeText(getActivity(), selectedItem, Toast.LENGTH_SHORT).show();
             }
         });
-
-
         return view;
     }
 }
