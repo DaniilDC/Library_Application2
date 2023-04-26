@@ -1,4 +1,4 @@
-package com.example.library_application;
+package com.example.library_application.data.datasource;
 
 public class Book {
     private String name;

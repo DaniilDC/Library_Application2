@@ -1,4 +1,4 @@
-package com.example.library_application;
+package com.example.library_application.ui.stateholder.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.library_application.R;
+import com.example.library_application.data.datasource.Book;
 
 import java.util.List;
 

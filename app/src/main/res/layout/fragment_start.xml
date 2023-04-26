@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#311841"
-    tools:context=".StartFragment">
+    tools:context="com.example.library_application.data.models.StartFragment">
+
 
     <ImageView
         android:layout_width="242dp"

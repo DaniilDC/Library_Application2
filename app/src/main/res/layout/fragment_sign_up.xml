@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:background="#311841"
-    tools:context=".SignUpFragment">
+    tools:context="com.example.library_application.ui.fragments.SignUpFragment">
 
     <TextView
         android:id="@+id/register2"
