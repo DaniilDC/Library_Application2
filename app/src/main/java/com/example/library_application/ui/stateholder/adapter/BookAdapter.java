@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.library_application.R;
-import com.example.library_application.data.datasource.Book;
+import com.example.library_application.data.models.Book;
 
 import java.util.List;
 

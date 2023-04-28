@@ -1,4 +1,4 @@
-package com.example.library_application.data.models;
+package com.example.library_application.ui.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 

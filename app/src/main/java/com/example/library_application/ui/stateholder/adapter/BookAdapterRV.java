@@ -1,7 +1,6 @@
 package com.example.library_application.ui.stateholder.adapter;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,7 @@ import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.library_application.R;
-import com.example.library_application.data.datasource.Book;
+import com.example.library_application.data.models.Book;
 
 import java.util.List;
 

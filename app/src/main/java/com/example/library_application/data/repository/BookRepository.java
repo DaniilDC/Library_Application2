@@ -1,22 +1,19 @@
 package com.example.library_application.data.repository;
 
+import androidx.lifecycle.LiveData;
+
 import com.example.library_application.R;
-import com.example.library_application.data.datasource.Book;
+import com.example.library_application.data.datasource.BookItemData;
+import com.example.library_application.data.models.Book;
+import com.example.library_application.data.protocols.BookProtocol;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookRepository {
-    private List<Book> books;
-
-    public BookRepository() {
-        books = new ArrayList<>();
-        books.add(new Book("Война и мир", R.drawable.purple_book));
-        books.add(new Book("Горе от ума", R.drawable.purple_book));
-        books.add(new Book("Идиот", R.drawable.purple_book));
-    }
-
-    public List<Book> getBooks() {
-        return books;
+public class BookRepository implements BookProtocol {
+    private final BookItemData getBookItemList = new BookItemData();
+    @Override
+    public LiveData<List<Book>> getBookItemList() {
+        return getBookItemList.getBookItemList();
     }
 }

@@ -4,24 +4,19 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.library_application.R;
-import com.example.library_application.data.datasource.Book;
+import com.example.library_application.data.models.Book;
 import com.example.library_application.ui.stateholder.adapter.BookAdapterRV;
 import com.example.library_application.ui.stateholder.viewmodel.BookViewModel;
-
-import java.security.Provider;
-import java.util.ArrayList;
 
 
 public class FragmentRecycleView extends Fragment implements BookAdapterRV.OnBookClickListener{
@@ -32,7 +27,7 @@ public class FragmentRecycleView extends Fragment implements BookAdapterRV.OnBoo
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bookViewModel = new ViewModelProvider(this).get(BookViewModel.class);
-        bookAdapterRV = new BookAdapterRV(bookViewModel.getLiveData(), this);
+        bookAdapterRV = new BookAdapterRV(bookViewModel.bookItemList, this);
     }
 
     @Override

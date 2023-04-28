@@ -1,4 +1,4 @@
-package com.example.library_application.data.models;
+package com.example.library_application.ui.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
