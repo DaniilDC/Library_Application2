@@ -1,27 +1,39 @@
 package com.example.library_application.data.models;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "book_table")
 public class Book {
+    @PrimaryKey(autoGenerate = true)
+    private  int id;
     private String name;
     private int flagResource;
+    private int priority;
 
-    public Book(String name, int flag) {
+    public Book(String name, int flagResource, int priority) {
         this.name = name;
-        this.flagResource = flag;
+        this.flagResource = flagResource;
+        this.priority = priority;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+        return name;
     }
 
     public int getFlagResource() {
-        return this.flagResource;
+        return flagResource;
     }
 
-    public void setFlagResource(int flagResource) {
-        this.flagResource = flagResource;
+    public int getPriority() {
+        return priority;
     }
 }

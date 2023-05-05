@@ -38,7 +38,9 @@ public class FragmentListView extends Fragment {
         ArrayList<Book> books = new ArrayList<Book>();
         String[] all_books = getResources().getStringArray(R.array.Book_names);
         for (String brand : all_books) {
-            books.add(new Book(brand, R.drawable.purple_book));
+            int i = 1;
+            i += 1;
+            books.add(new Book(brand, R.drawable.purple_book, i));
         }
         ListView bookList = view.findViewById(R.id.listViewBooks);
         BookAdapter bookAdapter = new BookAdapter(getContext(), R.layout.item, books);

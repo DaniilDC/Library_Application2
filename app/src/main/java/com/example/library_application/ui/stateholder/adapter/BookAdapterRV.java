@@ -14,13 +14,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.library_application.R;
 import com.example.library_application.data.models.Book;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookAdapterRV extends RecyclerView.Adapter<BookAdapterRV.ViewHolder> {
     private final OnBookClickListener onClickListener;
-    private LiveData<List<Book>> bookItems;
-    public BookAdapterRV(LiveData<List<Book>> books, OnBookClickListener onClickListener) {
-        this.bookItems = books;
+    private List<Book> notes = new ArrayList<>();
+    public BookAdapterRV(OnBookClickListener onClickListener) {
         this.onClickListener = onClickListener;
     }
     public interface OnBookClickListener {
@@ -36,7 +36,7 @@ public class BookAdapterRV extends RecyclerView.Adapter<BookAdapterRV.ViewHolder
 
     @Override
     public void onBindViewHolder(BookAdapterRV.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        Book book = bookItems.getValue().get(position);
+        Book book = notes.get(position);
         holder.flagView.setImageResource(book.getFlagResource());
         holder.nameView.setText(book.getName());
         holder.itemView.setOnClickListener(v -> onClickListener.onBookClick(book));
@@ -44,7 +44,7 @@ public class BookAdapterRV extends RecyclerView.Adapter<BookAdapterRV.ViewHolder
 
     @Override
     public int getItemCount() {
-        return bookItems.getValue().size();
+        return notes.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -56,5 +56,9 @@ public class BookAdapterRV extends RecyclerView.Adapter<BookAdapterRV.ViewHolder
             flagView = view.findViewById(R.id.PurpleBook);
             nameView = view.findViewById(R.id.name);
         }
+    }
+    public void setNotes(List<Book> notes) {
+        this.notes = notes;
+        notifyDataSetChanged();
     }
 }

@@ -15,8 +15,8 @@ import com.example.library_application.R;
 public class BookDescriptionFragment extends Fragment {
     private static final String ARG_TITLE = "title";
     private static final String ARG_IMAGE_URL = "imageUrl";
-    private ImageView musicImage;
-    private TextView musicTitle;
+    private ImageView bookImage;
+    private TextView bookTitle;
 
     public BookDescriptionFragment() {
         // Required empty public constructor
@@ -25,14 +25,14 @@ public class BookDescriptionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_book_description, container, false);
-        musicImage = view.findViewById(R.id.bookLogo);
-        musicTitle = view.findViewById(R.id.bookTitle);
+        bookImage = view.findViewById(R.id.bookLogo);
+        bookTitle = view.findViewById(R.id.bookTitle);
         Bundle args = getArguments();
         if (args != null) {
             String title = args.getString(ARG_TITLE);
             int imageUrl = args.getInt(ARG_IMAGE_URL);
-            musicTitle.setText(title);
-            Glide.with(this).load(imageUrl).into(musicImage);
+            bookTitle.setText(title);
+            Glide.with(this).load(imageUrl).into(bookImage);
         }
 
         return view;
